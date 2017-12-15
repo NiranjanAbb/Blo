@@ -3,6 +3,8 @@ using LK2.Models;
 using LK2.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using LK2.ViewModels;
+using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace LK2.Controllers
 {
@@ -27,13 +29,24 @@ namespace LK2.Controllers
             int c = a + b;
             return Ok(c);
         }
-
+        [HttpGet]
         public IActionResult Subtract()
         {
             int a = 50;
             int b = 20;
             int c = a - b;
             return Ok(c);
+        }
+        [HttpGet]
+        public List<string> GetProcess()
+        {
+            List<string> alist = new List<string>();
+            Process[] localAll = Process.GetProcesses();
+            foreach (Process process in localAll)
+            {
+                alist.Add(process.ProcessName);
+            }
+            return alist;
         }
         /// <summary>
         /// Provides an endpoint that can be 'pinged' for service monitoring purposes.

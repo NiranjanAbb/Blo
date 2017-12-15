@@ -84,6 +84,9 @@ namespace LK2
                      routes.MapRoute("api-add", "api/v1/Add", defaults: new { controller = "Api", action = "Add" });
 
                      routes.MapRoute("api-subtract", "api/v1/Subtract", defaults: new { controller = "Api", action = "Subtract" });
+
+                     routes.MapRoute("api-getprocess", "api/v1/GetProcess", defaults: new { controller = "Api", action = "GetProcess" });
+
                      // GET /api/v1/create - An endpoint that accepts a JSON payload to generate a short url.
                      routes.MapRoute("api-create", "api/v1/create", defaults: new { controller = "Api", action = "Generate" });
                      // GET /{hash} - The retrieval URL
