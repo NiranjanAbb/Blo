@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lk2-demo", "lk2-demo.csproj", "{77781874-D1C9-4B12-8E21-95273F69B9BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lk2", "lk2.csproj", "{77781874-D1C9-4B12-8E21-95273F69B9BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{126A574E-FFAD-4376-8A7F-E66A358635B5}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C258B68-FDD5-44A9-BF1B-E3C7E885CD56}
 	EndGlobalSection
 EndGlobal

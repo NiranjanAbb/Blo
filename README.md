@@ -30,7 +30,7 @@ __MSSQL__
 {
   "DbDriver":  "mssql",
   "ConnectionStrings": {
-    "DefaultConnection": "Data Source=vsvr-sql027;Initial Catalog=lk2;Integrated Security=False;User Id=sa;Password=<YourSaPassword>;"
+    "DefaultConnection": "Data Source=vsvr-sql027;Initial Catalog=lk3;Integrated Security=False;User Id=sa;Password=<YourSaPassword>;"
   }
 }
 ```

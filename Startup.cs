@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using LK2.Models;
+
 using Microsoft.EntityFrameworkCore;
-using LK2.Repositories;
+
 using Microsoft.Extensions.Configuration;
 
 namespace LK2
@@ -35,27 +35,27 @@ namespace LK2
         {
             services.AddMvc();
 
-            // Add our database context into the IoC container.
-            var driver = Configuration["DbDriver"];
-            // Use SQLite?
-            if (driver == "sqlite")
-            {
-                services.AddDbContext<DatabaseContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            }
-            // Use MSSQL?
-            if (driver == "mssql")
-            {
-                services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            }
+            //// Add our database context into the IoC container.
+            //var driver = Configuration["DbDriver"];
+            //// Use SQLite?
+            //if (driver == "sqlite")
+            //{
+            //    services.AddDbContext<DatabaseContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            //}
+            //// Use MSSQL?
+            //if (driver == "mssql")
+            //{
+            //    services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //}
 
-            // IoC bindings.
-            services.AddScoped<ILinksRepository, LinksRepository>();
+            //// IoC bindings.
+            //services.AddScoped<ILinksRepository, LinksRepository>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, DatabaseContext db)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            loggerFactory.AddConsole();
+           
 
             // Enable development environment exception page.
             if (env.IsDevelopment())
@@ -64,35 +64,35 @@ namespace LK2
             }
 
             // Enables automatic execution of Entity Framework migrations at application startup.
-            db.Database.Migrate();
+            //db.Database.Migrate();
 
             // Enable static files (assets to be served etc.)
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
+            app.UseMvc();
+            //app.UseMvc(
+            //     routes =>
+            //     {
+            //         // GET / - The homepage.
+            //         routes.MapRoute("homepage", "", defaults: new { controller = "Home", action = "Index" });
+            //         // POST / - Generates a new short url.
+            //         routes.MapRoute("generate", "", defaults: new { controller = "Home", action = "Create" });
+            //         // GET /docs/ - The documentation page.
+            //         routes.MapRoute("documentation", "docs/", defaults: new { controller = "Documentation", action = "Index" });
+            //         // GET /api/v1/ping - A simple JSON endpoint for service monitoring.
+            //         routes.MapRoute("api-ping", "api/v1/ping", defaults: new { controller = "Api", action = "Ping" });
 
-            app.UseMvc(
-                 routes =>
-                 {
-                     // GET / - The homepage.
-                     routes.MapRoute("homepage", "", defaults: new { controller = "Home", action = "Index" });
-                     // POST / - Generates a new short url.
-                     routes.MapRoute("generate", "", defaults: new { controller = "Home", action = "Create" });
-                     // GET /docs/ - The documentation page.
-                     routes.MapRoute("documentation", "docs/", defaults: new { controller = "Documentation", action = "Index" });
-                     // GET /api/v1/ping - A simple JSON endpoint for service monitoring.
-                     routes.MapRoute("api-ping", "api/v1/ping", defaults: new { controller = "Api", action = "Ping" });
+            //         routes.MapRoute("api-add", "api/v1/Add", defaults: new { controller = "Api", action = "Add" });
 
-                     routes.MapRoute("api-add", "api/v1/Add", defaults: new { controller = "Api", action = "Add" });
+            //         routes.MapRoute("api-subtract", "api/v1/Subtract", defaults: new { controller = "Api", action = "Subtract" });
 
-                     routes.MapRoute("api-subtract", "api/v1/Subtract", defaults: new { controller = "Api", action = "Subtract" });
+            //         routes.MapRoute("api-getprocess", "api/v1/GetProcess", defaults: new { controller = "Api", action = "GetProcess" });
 
-                     routes.MapRoute("api-getprocess", "api/v1/GetProcess", defaults: new { controller = "Api", action = "GetProcess" });
-
-                     // GET /api/v1/create - An endpoint that accepts a JSON payload to generate a short url.
-                     routes.MapRoute("api-create", "api/v1/create", defaults: new { controller = "Api", action = "Generate" });
-                     // GET /{hash} - The retrieval URL
-                     routes.MapRoute("retrieve", "{*hash}", defaults: new { controller = "Home", action = "Retrieve" });
-                 }
-            );
+            //         // GET /api/v1/create - An endpoint that accepts a JSON payload to generate a short url.
+            //         routes.MapRoute("api-create", "api/v1/create", defaults: new { controller = "Api", action = "Generate" });
+            //         // GET /{hash} - The retrieval URL
+            //         routes.MapRoute("retrieve", "{*hash}", defaults: new { controller = "Home", action = "Retrieve" });
+            //     }
+            //);
 
         }
     }
